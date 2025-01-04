@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.yascode</groupId>
-	<artifactId>section1</artifactId>
+	<artifactId>section2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>section1</name>
-	<description>section1</description>
+	<name>section2</name>
+	<description>section2</description>
 	<url/>
 	<licenses>
 		<license/>
