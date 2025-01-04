@@ -21,7 +21,7 @@ public class ProjectSecurityConfig {
                 .requestMatchers("/login", "/css/**").permitAll()
                 .anyRequest().authenticated());
 
-        http.formLogin(fl -> fl.loginPage("/login"));
+        http.formLogin(withDefaults());
         http.httpBasic(withDefaults());
 
         return http.build();
