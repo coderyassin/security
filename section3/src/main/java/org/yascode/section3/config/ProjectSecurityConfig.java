@@ -18,7 +18,6 @@ public class ProjectSecurityConfig {
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((requests) -> requests
                 .requestMatchers("/notices", "/contact", "/error").permitAll()
-                .requestMatchers("/login", "/css/**").permitAll()
                 .anyRequest().authenticated());
 
         http.formLogin(withDefaults());
