@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: ${SPRING_APP_NAME:eazybankbackend}
+  datasource:
+    url: jdbc:mysql://${DATABASE_HOST:192.168.1.39}:${DATABASE_PORT:3306}/${DATABASE_NAME:eazybank}?allowPublicKeyRetrieval=true&useSSL=false
+    username: ${DATABASE_USER:yascode}
+    password: ${DATABASE_PASSWORD:yascode}
+  jpa:
+    show-sql: ${JPA_SHOW_SQL:true}
+    properties:
+      hibernate:
+        format_sql: ${HIBERNATE_FORMAT_SQL:true}
+logging:
+  pattern:
+    console: ${LOG_PATTERN_CONSOLE:%green(%d{yyyy/MM/dd-HH:mm:ss.SSS}) %blue(%-5level) %red([%thread]) %yellow(%logger{15}) - %msg%n}
+  level:
+    org.springframework.security: ${SPRING_SECURITY_LOG_LEVEL:debug}
