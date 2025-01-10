@@ -1,5 +1,6 @@
 package org.yascode.section6.config;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -18,6 +19,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @Profile("!prod")
+@RequiredArgsConstructor
 public class ProjectSecurityConfig {
 
     @Bean
