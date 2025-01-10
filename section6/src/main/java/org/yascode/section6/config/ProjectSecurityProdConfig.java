@@ -1,4 +1,4 @@
-package org.yascode.section6.config.prod;
+package org.yascode.section6.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
