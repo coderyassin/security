@@ -15,7 +15,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CustomUserDetailsService implements UserDetailsService {
+public class EazyBankUserDetailsService implements UserDetailsService {
 
     private final CustomerRepository customerRepository;
 
