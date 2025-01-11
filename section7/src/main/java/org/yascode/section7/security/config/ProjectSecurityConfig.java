@@ -1,4 +1,4 @@
-package org.yascode.section7.config;
+package org.yascode.section7.security.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -12,6 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.password.HaveIBeenPwnedRestApiPasswordChecker;
+import org.yascode.section7.security.entrypoint.CustomBasicAuthenticationEntryPoint;
+import org.yascode.section7.security.handler.CustomAccessDeniedHandler;
 
 import javax.sql.DataSource;
 
@@ -30,7 +32,9 @@ public class ProjectSecurityConfig {
                 .requestMatchers("/notices", "/contact", "/error", "/register").permitAll()
                 .anyRequest().authenticated())
             .formLogin(withDefaults())
-            .httpBasic(withDefaults());
+            .httpBasic(hbc -> hbc.authenticationEntryPoint(new CustomBasicAuthenticationEntryPoint()))
+            .exceptionHandling(ex -> ex.authenticationEntryPoint(new CustomBasicAuthenticationEntryPoint())
+                                       .accessDeniedHandler(new CustomAccessDeniedHandler()));
 
         return http.build();
     }

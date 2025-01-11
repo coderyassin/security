@@ -1,4 +1,4 @@
-package org.yascode.section7.config;
+package org.yascode.section7.security.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;

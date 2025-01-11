@@ -1,4 +1,4 @@
-package org.yascode.section7.exception;
+package org.yascode.section7.security.exception;
 
 import org.springframework.security.core.AuthenticationException;
 

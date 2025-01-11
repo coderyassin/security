@@ -1,4 +1,4 @@
-package org.yascode.section7.config;
+package org.yascode.section7.security.provider;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Profile;
@@ -9,12 +9,12 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
-import org.yascode.section7.exception.NotAMagicUserException;
+import org.yascode.section7.security.exception.NotAMagicUserException;
 
 import java.util.List;
 
 @Component
-@Profile("!prod")
+@Profile("test")
 @Slf4j
 public class MagicUsernamePwdAuthenticationProvider implements AuthenticationProvider {
     @Override

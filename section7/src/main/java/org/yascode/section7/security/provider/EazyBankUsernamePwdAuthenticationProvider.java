@@ -1,4 +1,4 @@
-package org.yascode.section7.config;
+package org.yascode.section7.security.provider;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
