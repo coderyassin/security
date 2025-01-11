@@ -17,14 +17,13 @@ import static org.springframework.security.config.Customizer.withDefaults;
 public class ProjectSecurityProdConfig {
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/notices", "/contact", "/error", "/register").permitAll()
-                .anyRequest().authenticated());
-
-        http.formLogin(withDefaults());
-        http.httpBasic(withDefaults());
-
-        http.csrf(csrfConfigurer -> csrfConfigurer.disable());
+        http.requiresChannel(rcc -> rcc.anyRequest().requiresSecure())
+                .csrf(csrfConfigurer -> csrfConfigurer.disable())
+                .authorizeHttpRequests((requests) -> requests
+                        .requestMatchers("/notices", "/contact", "/error", "/register").permitAll()
+                        .anyRequest().authenticated())
+                .formLogin(withDefaults())
+                .httpBasic(withDefaults());
 
         return http.build();
     }

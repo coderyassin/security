@@ -24,14 +24,13 @@ public class ProjectSecurityConfig {
 
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests((requests) -> requests
+        http.requiresChannel(rcc -> rcc.anyRequest().requiresInsecure())
+            .csrf(csrfConfigurer -> csrfConfigurer.disable())
+            .authorizeHttpRequests((requests) -> requests
                 .requestMatchers("/notices", "/contact", "/error", "/register").permitAll()
-                .anyRequest().authenticated());
-
-        http.formLogin(withDefaults());
-        http.httpBasic(withDefaults());
-
-        http.csrf(csrfConfigurer -> csrfConfigurer.disable());
+                .anyRequest().authenticated())
+            .formLogin(withDefaults())
+            .httpBasic(withDefaults());
 
         return http.build();
     }
