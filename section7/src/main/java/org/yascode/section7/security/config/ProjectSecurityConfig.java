@@ -27,12 +27,15 @@ public class ProjectSecurityConfig {
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.sessionManagement(smc -> smc.invalidSessionUrl("/invalidSession")
+                                         .sessionFixation(session -> session.newSession())
                                          .maximumSessions(1)
+                                         .expiredUrl("/expiredSession")
                                          .maxSessionsPreventsLogin(true))
             .requiresChannel(rcc -> rcc.anyRequest().requiresInsecure())
             .csrf(csrfConfigurer -> csrfConfigurer.disable())
             .authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/register", "/notices", "/contact", "/error", "/invalidSession").permitAll()
+                .requestMatchers("/register", "/notices", "/contact",
+                                 "/error", "/invalidSession", "expiredSession").permitAll()
                 .anyRequest().authenticated())
             .formLogin(withDefaults())
             .httpBasic(hbc -> hbc.authenticationEntryPoint(new CustomBasicAuthenticationEntryPoint()))

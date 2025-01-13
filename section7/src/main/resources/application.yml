@@ -2,12 +2,12 @@ server:
   port: ${SERVER_PORT:8080}
   servlet:
     session:
-      timeout:${SESSION_TIMEOUT:60m}
+      timeout: ${SESSION_TIMEOUT:2m}
 spring:
   application:
     name: ${SPRING_APP_NAME:eazybankbackend}
   datasource:
-    url: jdbc:mysql://${DATABASE_HOST:192.168.1.205}:${DATABASE_PORT:3306}/${DATABASE_NAME:eazybank}?allowPublicKeyRetrieval=true&useSSL=false
+    url: jdbc:mysql://${DATABASE_HOST:192.168.35.108}:${DATABASE_PORT:3306}/${DATABASE_NAME:eazybank}?allowPublicKeyRetrieval=true&useSSL=false
     username: ${DATABASE_USER:yascode}
     password: ${DATABASE_PASSWORD:yascode}
   jpa:
@@ -32,13 +32,13 @@ server:
     key-alias: ${KEY_ALIAS:yascode}
   servlet:
     session:
-      timeout: ${SESSION_TIMEOUT:20m}
+      timeout: ${SESSION_TIMEOUT:2m}
 spring:
   config:
     activate:
       on-profile: prod
   datasource:
-    url: jdbc:mysql://${DATABASE_HOST:192.168.1.205}:${DATABASE_PORT:3306}/${DATABASE_NAME:eazybank}?allowPublicKeyRetrieval=true&useSSL=false
+    url: jdbc:mysql://${DATABASE_HOST:192.168.35.108}:${DATABASE_PORT:3306}/${DATABASE_NAME:eazybank}?allowPublicKeyRetrieval=true&useSSL=false
     username: ${DATABASE_USER:yascode}
     password: ${DATABASE_PASSWORD:yascode}
   jpa:

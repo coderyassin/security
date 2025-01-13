@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Invalid Session</title>
+</head>
+<body>
+<h1>Session Invalid</h1>
+<p>Your session is invalid. This may have happened because:</p>
+<ul>
+    <li>You accessed an invalid session identifier.</li>
+    <li>Your session was deleted or corrupted.</li>
+</ul>
+<p>Please <a th:href="@{/login}">log in</a> again to continue.</p>
+</body>
+</html>
