@@ -40,6 +40,10 @@ public class ProjectSecurityConfig {
                                  .passwordParameter("secretPwd")
                                  .successHandler(authenticationSuccessHandler)
                                  .failureHandler(authenticationFailureHandler))
+            .logout(lc -> lc.logoutSuccessUrl("/login?logout=true")
+                            .invalidateHttpSession(true)
+                            .clearAuthentication(true)
+                            .deleteCookies("JSESSIONID"))
             .httpBasic(hbc -> hbc.authenticationEntryPoint(new CustomBasicAuthenticationEntryPoint()))
             .exceptionHandling(ex -> ex.accessDeniedHandler(new CustomAccessDeniedHandler()));
 

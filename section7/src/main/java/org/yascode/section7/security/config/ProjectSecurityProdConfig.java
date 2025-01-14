@@ -32,13 +32,18 @@ public class ProjectSecurityProdConfig {
                 .requiresChannel(rcc -> rcc.anyRequest().requiresInsecure())
                 .csrf(csrfConfigurer -> csrfConfigurer.disable())
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/notices", "/contact", "/error", "/register").permitAll()
+                        .requestMatchers( "/", "/home","/login/**", "/register", "/notices", "/contact",
+                                "/assets/**", "/error", "/invalidSession", "expiredSession").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(flc -> flc.loginPage("/login")
                         .usernameParameter("userid")
                         .passwordParameter("secretPwd")
                         .successHandler(authenticationSuccessHandler)
                         .failureHandler(authenticationFailureHandler))
+                .logout(lc -> lc.logoutSuccessUrl("/login?logout=true")
+                        .invalidateHttpSession(true)
+                        .clearAuthentication(true)
+                        .deleteCookies("JSESSIONID"))
                 .httpBasic(hbc -> hbc.authenticationEntryPoint(new CustomBasicAuthenticationEntryPoint()))
                 .exceptionHandling(ex -> ex.authenticationEntryPoint(new CustomBasicAuthenticationEntryPoint())
                                            .accessDeniedHandler(new CustomAccessDeniedHandler()));
